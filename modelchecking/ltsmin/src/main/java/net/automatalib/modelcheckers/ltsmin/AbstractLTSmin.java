@@ -103,7 +103,7 @@ public abstract class AbstractLTSmin<I, A, R> implements ModelChecker<I, A, Stri
      *
      * @return the major version.
      */
-    protected abstract LTSminVersion getMinimumRequiredVersion(@UnknownInitialization(AbstractLTSmin.class) AbstractLTSmin<I, A, R> this);
+    protected abstract LTSminVersion getMinimumRequiredVersion(AbstractLTSmin<I, A, R> this);
 
     /**
      * Returns the extra command line options that should be given to the etf2lts-mc binary.
@@ -150,7 +150,7 @@ public abstract class AbstractLTSmin<I, A, R> implements ModelChecker<I, A, Stri
      *
      * @see AbstractLTSmin
      */
-    protected final @Nullable File findCounterExampleFSM(A hypothesis, Collection<? extends I> inputs, String formula) {
+    protected final File findCounterExampleFSM(A hypothesis, Collection<? extends I> inputs, String formula) {
 
         try {
             verifyFormula(formula);

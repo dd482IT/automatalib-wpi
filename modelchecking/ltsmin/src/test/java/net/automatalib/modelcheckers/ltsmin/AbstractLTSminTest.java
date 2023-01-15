@@ -61,14 +61,12 @@ public abstract class AbstractLTSminTest<A, R extends Output<String, ?>> {
 
     protected abstract void newModelChecker();
 
-    @BeforeClass
     public void setupBeforeClass() {
         if (!LTSminUtil.supports(getRequiredVersion())) {
             throw new SkipException("LTSmin not installed in proper version");
         }
     }
 
-    @BeforeMethod
     public void setUp() {
         newModelChecker();
         counterExample = createCounterExample();
@@ -80,7 +78,6 @@ public abstract class AbstractLTSminTest<A, R extends Output<String, ?>> {
     /**
      * First test for the absence of a counterexample, then test for the presence.
      */
-    @Test
     public void testFindCounterExample() {
         R noCE = getModelChecker().findCounterExample(automaton, alphabet, "true");
         Assert.assertNull(noCE);
